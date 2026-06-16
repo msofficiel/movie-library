@@ -4,7 +4,7 @@
 
 {% block body %}
 <div class="container">
-    <h1>🎬 Vidéothèque - Liste des films</h1>
+    <h1>Vidéothèque - Liste des films</h1>
 
     <form method="get" action="{{ path('app_movie_index') }}">
         <input type="text" name="search" placeholder="Rechercher un titre..." value="{{ app.request.query.get('search') }}">

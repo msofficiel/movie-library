@@ -1,4 +1,18 @@
 {{ form_start(form) }}
-    {{ form_widget(form) }}
-    <button class="btn">{{ button_label|default('Save') }}</button>
+    <div class="form-row">
+        {{ form_row(form.title) }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.director) }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.releaseYear) }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.genre) }}
+    </div>
+    <div class="form-row">
+        {{ form_row(form.synopsis) }}
+    </div>
+    <button class="btn">Enregistrer</button>
 {{ form_end(form) }}

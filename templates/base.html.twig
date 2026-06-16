@@ -5,15 +5,94 @@
         <title>{% block title %}Vidéothèque{% endblock %}</title>
         <link rel="icon" href="data:image/svg+xml,<svg xmlns=%22http://www.w3.org/2000/svg%22 viewBox=%220 0 128 128%22><text y=%221.2em%22 font-size=%2296%22>⚫️</text><text y=%221.3em%22 x=%220.2em%22 font-size=%2276%22 fill=%22%23fff%22>sf</text></svg>">
         <style>
-            body { font-family: Arial, sans-serif; margin: 0; background: #f4f4f4; }
-            .container { max-width: 800px; margin: 20px auto; background: white; padding: 20px; border-radius: 8px; }
-            nav { background: #222; padding: 12px 20px; }
-            nav a { color: white; text-decoration: none; margin-right: 20px; font-weight: bold; }
+            * { box-sizing: border-box; }
+            body {
+                font-family: "Segoe UI", Arial, sans-serif;
+                margin: 0;
+                background: #d6ecf7;
+                color: #2c2c2c;
+            }
+            .container {
+                max-width: 850px;
+                margin: 30px auto;
+                background: white;
+                padding: 30px;
+                border-radius: 6px;
+                box-shadow: 0 1px 3px rgba(0,0,0,0.1);
+            }
+            h1 {
+                font-size: 22px;
+                margin-top: 0;
+                margin-bottom: 20px;
+                color: #1a1a1a;
+            }
+            nav {
+                background: #2c3e50;
+                padding: 14px 30px;
+            }
+            nav a {
+                color: #ecf0f1;
+                text-decoration: none;
+                margin-right: 25px;
+                font-size: 14px;
+            }
             nav a:hover { text-decoration: underline; }
-            table { width: 100%; border-collapse: collapse; margin-top: 15px; }
-            th, td { border: 1px solid #ddd; padding: 8px; text-align: left; }
-            th { background: #333; color: white; }
-            a { color: #0066cc; }
+            table {
+                width: 100%;
+                border-collapse: collapse;
+                margin-top: 15px;
+                font-size: 14px;
+            }
+            th, td {
+                border: 1px solid #e0e0e0;
+                padding: 10px;
+                text-align: left;
+            }
+            th {
+                background: #2c3e50;
+                color: white;
+                font-weight: 600;
+            }
+            tr:nth-child(even) { background: #f4f9fc; }
+            a { color: #2980b9; }
+            .form-row { margin-bottom: 15px; }
+            .form-row label {
+                display: block;
+                margin-bottom: 5px;
+                font-weight: 600;
+                font-size: 14px;
+                color: #444;
+            }
+            .form-row input,
+            .form-row select,
+            .form-row textarea {
+                width: 100%;
+                padding: 8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+                font-size: 14px;
+            }
+            .form-row textarea { min-height: 90px; }
+            .btn, button {
+                padding: 9px 18px;
+                background: #2980b9;
+                color: white;
+                border: none;
+                border-radius: 4px;
+                cursor: pointer;
+                font-size: 14px;
+            }
+            .btn:hover, button:hover { background: #246a9c; }
+            form[method="get"] {
+                display: flex;
+                gap: 8px;
+                margin-bottom: 15px;
+            }
+            form[method="get"] input {
+                padding: 8px 10px;
+                border: 1px solid #ccc;
+                border-radius: 4px;
+            }
         </style>
         {% block stylesheets %}
         {% endblock %}
@@ -31,9 +110,9 @@
     </head>
     <body>
         <nav>
-            <a href="{{ path('app_home') }}">🏠 Accueil</a>
+            <a href="{{ path('app_home') }}">Accueil</a>
             <a href="{{ path('app_movie_index') }}">Liste des films</a>
-            <a href="{{ path('app_movie_new') }}">+ Ajouter un film</a>
+            <a href="{{ path('app_movie_new') }}">Ajouter un film</a>
         </nav>
         {% block body %}{% endblock %}
     </body>
