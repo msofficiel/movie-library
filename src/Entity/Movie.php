@@ -37,7 +37,7 @@ class Movie
     #[ORM\Column(type: Types::TEXT)]
     private ?string $synopsis = null;
 
-    // Le genre doit faire partie de la liste autorisée (bonus)
+    // Le genre doit faire partie de la liste autorisée
     #[Assert\NotBlank(message: "Le genre est obligatoire.")]
     #[Assert\Choice(choices: ['Action', 'Science-Fiction', 'Comédie', 'Horreur', 'Drame'], message: "Choisissez un genre valide.")]
     #[ORM\Column(length: 255)]

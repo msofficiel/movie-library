@@ -13,7 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class MovieController extends AbstractController
 {
-    // Page d'accueil, affiche le nombre total de films enregistrés (bonus)
+    // Page d'accueil, affiche le nombre total de films enregistrés
     #[Route('/', name: 'app_home', methods: ['GET'])]
     public function home(MovieRepository $movieRepository): Response
     {
@@ -22,14 +22,13 @@ final class MovieController extends AbstractController
         ]);
     }
 
-    // Liste des films, avec possibilité de rechercher par titre (bonus)
+    // Liste des films, avec possibilité de rechercher par titre
     #[Route('/movie', name: 'app_movie_index', methods: ['GET'])]
     public function index(Request $request, MovieRepository $movieRepository): Response
     {
         $search = $request->query->get('search');
 
         if ($search) {
-            // Si une recherche est faite, on filtre les films par titre
             $movies = $movieRepository->createQueryBuilder('m')
                 ->where('m.title LIKE :search')
                 ->setParameter('search', '%'.$search.'%')
@@ -93,7 +92,7 @@ final class MovieController extends AbstractController
         ]);
     }
 
-    // Suppression d'un film (vérifie le token CSRF pour la sécurité)
+    // Suppression d'un film
     #[Route('/movie/{id}', name: 'app_movie_delete', methods: ['POST'])]
     public function delete(Request $request, Movie $movie, EntityManagerInterface $entityManager): Response
     {
