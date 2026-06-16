@@ -15,6 +15,12 @@ Application de gestion d'une collection de films, réalisée avec Symfony 7, Doc
 - Champ genre avec liste de choix
 
 ## Installation
+
+composer install
+symfony console doctrine:database:create
+symfony console doctrine:migrations:migrate
+symfony server:start
+
 ## Base de données
 
-Le fichier `database_structure.sql` contient la structure de la table `movie` si besoin de la recréer manuellement.
+Le fichier database_structure.sql contient la structure de la table movie si besoin de la recréer manuellement.
