@@ -1,0 +1,15 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Modifier {{ movie.title }}{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>Modifier le film : {{ movie.title }}</h1>
+
+    {{ include('movie/_form.html.twig') }}
+
+    <a href="{{ path('app_movie_index') }}">← Retour à la liste</a>
+
+    {{ include('movie/_delete_form.html.twig') }}
+</div>
+{% endblock %}

@@ -1,0 +1,11 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Accueil{% endblock %}
+
+{% block body %}
+<div class="container">
+    <h1>🎬 Bienvenue sur la Vidéothèque</h1>
+    <p>Nombre de films enregistrés : <strong>{{ total }}</strong></p>
+    <a href="{{ path('app_movie_index') }}">Voir la liste des films</a>
+</div>
+{% endblock %}
