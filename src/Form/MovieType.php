@@ -17,6 +17,7 @@ class MovieType extends AbstractType
             ->add('director')
             ->add('releaseYear')
             ->add('synopsis')
+            // Champ genre avec une liste de choix fixe (bonus)
             ->add('genre', ChoiceType::class, [
                 'choices' => [
                     'Action' => 'Action',

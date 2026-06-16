@@ -6,6 +6,7 @@
 <div class="container">
     <h1>Vidéothèque - Liste des films</h1>
 
+    {# Formulaire de recherche par titre (bonus) #}
     <form method="get" action="{{ path('app_movie_index') }}">
         <input type="text" name="search" placeholder="Rechercher un titre..." value="{{ app.request.query.get('search') }}">
         <button type="submit">Rechercher</button>
@@ -24,6 +25,7 @@
             </tr>
         </thead>
         <tbody>
+        {# On parcourt la liste des films envoyée par le contrôleur #}
         {% for movie in movies %}
             <tr>
                 <td>{{ movie.title }}</td>

@@ -13,6 +13,7 @@ use Symfony\Component\Routing\Attribute\Route;
 
 final class MovieController extends AbstractController
 {
+    // Page d'accueil, affiche le nombre total de films enregistrés (bonus)
     #[Route('/', name: 'app_home', methods: ['GET'])]
     public function home(MovieRepository $movieRepository): Response
     {
@@ -21,12 +22,14 @@ final class MovieController extends AbstractController
         ]);
     }
 
+    // Liste des films, avec possibilité de rechercher par titre (bonus)
     #[Route('/movie', name: 'app_movie_index', methods: ['GET'])]
     public function index(Request $request, MovieRepository $movieRepository): Response
     {
         $search = $request->query->get('search');
 
         if ($search) {
+            // Si une recherche est faite, on filtre les films par titre
             $movies = $movieRepository->createQueryBuilder('m')
                 ->where('m.title LIKE :search')
                 ->setParameter('search', '%'.$search.'%')
@@ -41,6 +44,7 @@ final class MovieController extends AbstractController
         ]);
     }
 
+    // Formulaire de création d'un nouveau film
     #[Route('/movie/new', name: 'app_movie_new', methods: ['GET', 'POST'])]
     public function new(Request $request, EntityManagerInterface $entityManager): Response
     {
@@ -61,6 +65,7 @@ final class MovieController extends AbstractController
         ]);
     }
 
+    // Affiche le détail d'un film
     #[Route('/movie/{id}', name: 'app_movie_show', methods: ['GET'])]
     public function show(Movie $movie): Response
     {
@@ -69,6 +74,7 @@ final class MovieController extends AbstractController
         ]);
     }
 
+    // Formulaire de modification d'un film existant
     #[Route('/movie/{id}/edit', name: 'app_movie_edit', methods: ['GET', 'POST'])]
     public function edit(Request $request, Movie $movie, EntityManagerInterface $entityManager): Response
     {
@@ -87,6 +93,7 @@ final class MovieController extends AbstractController
         ]);
     }
 
+    // Suppression d'un film (vérifie le token CSRF pour la sécurité)
     #[Route('/movie/{id}', name: 'app_movie_delete', methods: ['POST'])]
     public function delete(Request $request, Movie $movie, EntityManagerInterface $entityManager): Response
     {
